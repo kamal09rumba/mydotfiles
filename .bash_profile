@@ -2,6 +2,12 @@
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 ### setting PATH for mysql
 export PATH=$PATH:/usr/local/mysql/bin
+### postgresql
+export PATH=”/usr/local/Cellar/postgresql/11.4/bin/pg_config:$PATH”
+### Java
+#export JAVA_HOME=$(/usr/libexec/java_home -v 12.0.2)
+## Java 8
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 ### alias
 # composer
 alias composer="php /usr/local/bin/composer.phar"
@@ -15,3 +21,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ### Rabbitmq
 export PATH=$PATH:/usr/local/sbin
+## Geoserver
+export GEOSERVER_HOME=/usr/local/geoserver
+# support utf-8
+export PYTHONIOENCODING=UTF-8
