@@ -23,5 +23,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/local/sbin
 ## Geoserver
 export GEOSERVER_HOME=/usr/local/geoserver
-# support utf-8
+## Support utf-8
 export PYTHONIOENCODING=UTF-8
+## Git autocomplete
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
