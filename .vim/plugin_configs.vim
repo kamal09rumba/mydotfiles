@@ -24,6 +24,7 @@ let NERDTreeShowHidden=1
 " ALE Configuration
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'html': ['prettier'],
 \   'css': ['prettier'],
 \   'javascript': ['prettier', 'eslint'],
 \   'json': ['prettier'],
@@ -33,6 +34,7 @@ let g:ale_fixers = {
 \   'yaml': ['prettier'],
 \}
 let g:ale_linters = {
+\   'html': ['prettier'],
 \   'css': ['prettier'],
 \   'javascript': ['prettier', 'eslint'],
 \   'json': ['prettier'],

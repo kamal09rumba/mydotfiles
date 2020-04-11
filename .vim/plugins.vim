@@ -21,7 +21,7 @@ Plug 'mbbill/undotree'
 Plug 'itchyny/lightline.vim'
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Unix shell command
-Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-eunuch'
 " Completion tool for HTML, CSS & JAVASCRIPT
 Plug 'mattn/emmet-vim'
 " EditorConfig
