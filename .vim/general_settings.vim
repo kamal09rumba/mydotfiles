@@ -79,5 +79,9 @@ nnoremap T gT
 
 " }}}
 
+" Set swapfile in different directory
+set swapfile
+set directory=$TMPDIR
+
 " Auto reload vimrc on change
 autocmd! BufWritePost .vimrc source %

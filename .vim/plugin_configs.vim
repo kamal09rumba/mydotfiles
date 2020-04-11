@@ -141,7 +141,3 @@ catch
 endtry
 " }}}
 
-" Set swapfile in different directory
-"set swapfile
-"set directory=~/.vim_runtime/temp_dirs/swapdir
-
