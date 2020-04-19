@@ -125,13 +125,21 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " }}}
 
-" Colorscheme
+""" Colorscheme
+"" solarized
+"set t_Co=256
+"set background=dark
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+"colorscheme solarized
+
+"" gruvbox
 set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
-
+let g:gruvbox_termcolors=256
+let g:gruvbox_termtrans=1
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
 " Presistent undo on files"{{{
 try
@@ -140,4 +148,3 @@ try
 catch
 endtry
 " }}}
-

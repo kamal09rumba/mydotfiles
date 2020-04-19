@@ -66,12 +66,10 @@ Plug 'w0rp/ale'
 " Plug 'honza/vim-snippets'
 
 " ColorScheme
-Plug 'altercation/vim-colors-solarized'
-
+" Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
 "delc PlugUpgrade
 "filetype plugin indent on
-
-
