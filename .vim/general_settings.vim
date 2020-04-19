@@ -9,6 +9,9 @@ endif
 " Enable Backspace(delete key)
 set backspace=indent,eol,start
 
+" OS X clipboard sharing
+set clipboard=unnamed
+
 " Key Mapping
 inoremap jj <ESC>
 inoremap jk <ESC>
