@@ -1,5 +1,8 @@
 ### Setting PATH for Python 3.7
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+## php
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 ### setting PATH for mysql
 export PATH=$PATH:/usr/local/mysql/bin
 ### postgresql
@@ -10,7 +13,7 @@ export PATH=”/usr/local/Cellar/postgresql/11.4/bin/pg_config:$PATH”
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 ### alias
 # composer
-alias composer="php /usr/local/bin/composer.phar"
+alias composer="php /usr/local/bin/composer"
 ### laravel
 export PATH=~/.composer/vendor/bin:$PATH
 ## Android
@@ -25,6 +28,8 @@ export PATH=$PATH:/usr/local/sbin
 export GEOSERVER_HOME=/usr/local/geoserver
 ## Support utf-8
 export PYTHONIOENCODING=UTF-8
+# for localization
+export PATH="/usr/local/opt/gettext/bin:$PATH"
 ## Git autocomplete
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
