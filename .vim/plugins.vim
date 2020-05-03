@@ -13,6 +13,8 @@ Plug 'airblade/vim-gitgutter'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" NERD Commenter (code comment)
+Plug 'preservim/nerdcommenter'
 " Text Navigation
 Plug 'easymotion/vim-easymotion'
 " Undo History Visualizer
@@ -40,6 +42,8 @@ Plug 'ap/vim-css-color' " Preview css color in editor
 Plug 'pangloss/vim-javascript'
 " React JSX
 Plug 'mxw/vim-jsx'
+" Time tracking
+"Plug 'wakatime/vim-wakatime'
 
 " Auto-Complete
 function! BuildYCM(info)

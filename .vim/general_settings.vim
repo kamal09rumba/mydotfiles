@@ -12,11 +12,13 @@ set backspace=indent,eol,start
 " OS X clipboard sharing
 set clipboard=unnamed
 
+filetype plugin on
+
 " Key Mapping
 inoremap jj <ESC>
 inoremap jk <ESC>
 
-set encoding=utf8 " UTF-8 support
+set encoding=utf-8 " UTF-8 support
 set nu " show line number
 " set relativenumber " show relative number
 set ruler " set ruler
@@ -54,7 +56,7 @@ syntax on
 
 set incsearch " incremental search as you type
 set hlsearch " hightlight search
-set showmatch " show matching bracket
+set showmatch " highlight matching bracket
 " This unsets the last search pattern register by hitting return
 nnoremap <CR> :noh<CR><CR>
 " Enable ignorecase when searching

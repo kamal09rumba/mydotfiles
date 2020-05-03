@@ -21,6 +21,25 @@ let NERDTreeShowHidden=1
 " }}}
 
 
+" NERDCommenterComment configuration
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+
 " ALE Configuration
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -44,7 +63,7 @@ let g:ale_linters = {
 \   'yaml': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
-let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#ale#enabled = 1
 
 
 " YouCompleteMe specific "{{{
@@ -136,10 +155,28 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "" gruvbox
 set t_Co=256
 set background=dark
+set laststatus=2 " Allows Lightline to work properly
 let g:gruvbox_termcolors=256
 let g:gruvbox_termtrans=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
+
+
+" Lightlist configuration
+let g:lightline = {
+\   'colorscheme': 'powerline',
+\   'inactive': {
+\      'left': [['readonly', 'relativepath', 'modified']]
+\   },
+\   'active': {
+\      'left': [ [ 'mode', 'paste' ],
+\                [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+\    },
+\    'component_function': {
+\       'gitbranch': 'FugitiveHead'
+\    },
+\}
+
 
 " Presistent undo on files"{{{
 try
