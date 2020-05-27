@@ -34,3 +34,7 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+## ngork
+alias ngork="/usr/local/bin/ngrok"
+## medis
+alias medis='( cd "$HOME/medis" && npm start )'
