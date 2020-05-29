@@ -19,6 +19,7 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 
 set encoding=utf-8 " UTF-8 support
+
 set nu " show line number
 " set relativenumber " show relative number
 set ruler " set ruler

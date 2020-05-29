@@ -2,7 +2,10 @@
 " Plugins Configurations
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-" Nerdtree configuration "{{{
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Nerdtree configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open NERDTree by default
 autocmd vimenter * NERDTree
 " Open NERDTree if no filename specified
@@ -18,10 +21,11 @@ map <c-n> :NERDTreeToggle<CR>
 autocmd BufWinEnter * NERDTreeMirror
 " show hidden files
 let NERDTreeShowHidden=1
-" }}}
 
 
-" NERDCommenterComment configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     NERDCommenterComment configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Use compact syntax for prettified multi-line comments
@@ -40,7 +44,9 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 
-" ALE Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Ale (syntax checker and linter)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'html': ['prettier'],
@@ -66,7 +72,9 @@ let g:ale_fix_on_save = 1
 "let g:airline#extensions#ale#enabled = 1
 
 
-" YouCompleteMe specific "{{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     YouCompleteMe specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close preview afer insertion
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -83,7 +91,14 @@ if 'VIRTUAL_ENV' in os.environ:
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   exec(open(activate_this).read(), dict(__file__=activate_this))
 EOF
-" }}}
+
+fun! GoYCM()
+    nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+    nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+    nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+endfun
+
+
 
 
 " UndoTree specific "{{{
@@ -92,7 +107,9 @@ nnoremap <c-t> :UndotreeToggle<cr>
 
 
 
-"FZF specific "{{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     FZF specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 nnoremap <silent> <expr> <c-b> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Buffers\<cr>"
 
@@ -108,8 +125,6 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-" }}}
-
 
 
 " Easymotion Specific "{{{
@@ -140,19 +155,10 @@ nmap <Leader>s <Plug>(easymotion-overwin-f2)
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Misc {{{
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-" }}}
 
-""" Colorscheme
-"" solarized
-"set t_Co=256
-"set background=dark
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
-"colorscheme solarized
-
-"" gruvbox
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Gruvbox config (Colorscheme)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
 set background=dark
 set laststatus=2 " Allows Lightline to work properly
@@ -161,8 +167,19 @@ let g:gruvbox_termtrans=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
+"" solarized
+"set t_Co=256
+"set background=dark
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+"colorscheme solarized
 
-" Lightlist configuration
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Lightline configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
 \   'colorscheme': 'powerline',
 \   'inactive': {
@@ -178,10 +195,18 @@ let g:lightline = {
 \}
 
 
-" Presistent undo on files"{{{
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Presistent undo on files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
     set undodir=~/.vim_runtime/temp_dirs/undodir
     set undofile
 catch
 endtry
+
+
+" Misc {{{
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType typescript :call GoYCM()
 " }}}
