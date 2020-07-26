@@ -68,6 +68,12 @@ let g:ale_linters = {
 \   'scss': ['prettier'],
 \   'yaml': ['prettier'],
 \}
+
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
 let g:ale_fix_on_save = 1
 "let g:airline#extensions#ale#enabled = 1
 
@@ -154,6 +160,15 @@ nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Emmet-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" redefine trigger key ( using tab for autocomplete html tag )
+let g:user_emmet_expandabbr_key='<Tab>'
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
