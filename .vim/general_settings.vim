@@ -18,6 +18,9 @@ filetype plugin on
 inoremap jj <ESC>
 inoremap jk <ESC>
 
+" Use `SPACE` as a mapleader
+let mapleader=" "
+
 set encoding=utf-8 " UTF-8 support
 
 set nu " show line number

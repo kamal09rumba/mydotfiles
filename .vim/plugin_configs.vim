@@ -1,5 +1,14 @@
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Plugins Configurations
+" 1. Nerdtree configuration
+" 2. NERDCommenterComment configuration
+" 3. ALE
+" 4. YouCompleteMe
+" 5. FZF
+" 6. Emmet-vim
+" 7. Gruvbox
+" 8. Lightline
+" 9. Vim fugitive
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -209,6 +218,14 @@ let g:lightline = {
 \    },
 \}
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Vim fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>gs :G<CR>
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
