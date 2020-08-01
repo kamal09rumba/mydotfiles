@@ -240,5 +240,5 @@ endtry
 
 " Misc {{{
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType typescript :call GoYCM()
+autocmd FileType typescript,python :call GoYCM()
 " }}}
