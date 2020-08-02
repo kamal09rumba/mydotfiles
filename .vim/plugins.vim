@@ -29,7 +29,7 @@ Plug 'mattn/emmet-vim'
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 " Fuzzy Finder(similar to GOTO)
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'
@@ -37,13 +37,16 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 " CSS & SCSS
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'ap/vim-css-color' " Preview css color in editor
+" Preview css color in editor
+Plug 'ap/vim-css-color'
 " Javascript
 Plug 'pangloss/vim-javascript'
 " React JSX
 Plug 'mxw/vim-jsx'
 " Time tracking
 "Plug 'wakatime/vim-wakatime'
+" Phpcomplete.vim(Improved PHP omni-completion)
+Plug 'shawncplus/phpcomplete.vim'
 
 " Auto-Complete
 function! BuildYCM(info)

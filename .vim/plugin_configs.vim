@@ -5,10 +5,11 @@
 " 3. ALE
 " 4. YouCompleteMe
 " 5. FZF
-" 6. Emmet-vim
-" 7. Gruvbox
-" 8. Lightline
-" 9. Vim fugitive
+" 6. Vim-easymotion
+" 7. Emmet-vim
+" 8. Gruvbox
+" 9. Lightline
+" 10. Vim fugitive
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -32,6 +33,7 @@ autocmd BufWinEnter * NERDTreeMirror
 let NERDTreeShowHidden=1
 
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "     NERDCommenterComment configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +55,15 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     PHP linter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_php_phpcs_executable='$HOME/.composer/vendor/bin/phpcs'
+let g:ale_php_php_cs_fixer_executable='$HOME/.composer/vendor/bin/php-cs-fixer'
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "     Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,6 +77,7 @@ let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \   'scss': ['prettier'],
 \   'yaml': ['prettier'],
+\   'php': ['php_cs_fixer'],
 \}
 let g:ale_linters = {
 \   'html': ['prettier'],
@@ -76,6 +88,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'scss': ['prettier'],
 \   'yaml': ['prettier'],
+\   'php': ['php_cs_fixer'],
 \}
 
 let g:ale_sign_error = '✘'
@@ -88,7 +101,7 @@ let g:ale_fix_on_save = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"     YouCompleteMe specific
+"     YouCompleteMe(YCM) specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close preview afer insertion
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -96,6 +109,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_python_binary_path = 'python3'
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
+" Open GoToDefinition in new tab
+let g:ycm_goto_buffer_command = 'new-tab'
+
 " virtualenv support
 "python with virtualenv support
 py3 << EOF
@@ -112,8 +128,6 @@ fun! GoYCM()
     nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
     nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
 endfun
-
-
 
 
 " UndoTree specific "{{{
@@ -142,12 +156,13 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
-" Easymotion Specific "{{{
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Vim easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 1 " Enable default mappings (is enabled by default)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-
-
 
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
@@ -240,5 +255,6 @@ endtry
 
 " Misc {{{
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType typescript,python :call GoYCM()
 " }}}
