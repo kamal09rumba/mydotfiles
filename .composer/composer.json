@@ -1,0 +1,7 @@
+{
+    "require": {
+        "laravel/installer": "^2.3",
+        "squizlabs/php_codesniffer": "*",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    }
+}
