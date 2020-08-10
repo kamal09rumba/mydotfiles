@@ -141,8 +141,12 @@ nnoremap <c-t> :UndotreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 nnoremap <silent> <expr> <c-b> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Buffers\<cr>"
+" Finding files
+nnoremap <silent> <C-f> :Files<CR>
+" Finding in files
+nnoremap <silent> <Leader>f :Rg<CR>
 
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 

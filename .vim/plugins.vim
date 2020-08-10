@@ -47,6 +47,8 @@ Plug 'mxw/vim-jsx'
 "Plug 'wakatime/vim-wakatime'
 " Phpcomplete.vim(Improved PHP omni-completion)
 Plug 'shawncplus/phpcomplete.vim'
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Auto-Complete
 function! BuildYCM(info)
