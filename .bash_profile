@@ -28,13 +28,18 @@ export PATH=$PATH:/usr/local/sbin
 export GEOSERVER_HOME=/usr/local/geoserver
 ## Support utf-8
 export PYTHONIOENCODING=UTF-8
-# for localization
+# For Localization
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 ## Git autocomplete
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
-## ngork
+## Ngork
 alias ngork="/usr/local/bin/ngrok"
-## medis
+## Medis
 alias medis='( cd "$HOME/medis" && npm start )'
+## fzf & ripgrep(rg)
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
