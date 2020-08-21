@@ -12,7 +12,9 @@ set backspace=indent,eol,start
 " OS X clipboard sharing
 set clipboard=unnamed
 
+" Autocompletion
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Key Mapping
 inoremap jj <ESC>
@@ -24,7 +26,7 @@ let mapleader=" "
 set encoding=utf-8 " UTF-8 support
 
 set nu " show line number
-" set relativenumber " show relative number
+set relativenumber " show relative number
 set ruler " set ruler
 "set nowrap " disable wrapping of lines
 "set shiftwidth=2
@@ -48,6 +50,18 @@ autocmd Filetype scss setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType make setlocal noexpandtab
+" for drupal
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+endif
 
 " Enable detect of file change outside of vim
 set autoread

@@ -39,16 +39,20 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
 " Preview css color in editor
 Plug 'ap/vim-css-color'
-" Javascript
+" Javascript support
 Plug 'pangloss/vim-javascript'
-" React JSX
-Plug 'mxw/vim-jsx'
+" TypeScript support
+Plug 'leafgarland/typescript-vim'
+" React support
+Plug 'maxmellon/vim-jsx-pretty'
 " Time tracking
 "Plug 'wakatime/vim-wakatime'
 " Phpcomplete.vim(Improved PHP omni-completion)
 Plug 'shawncplus/phpcomplete.vim'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+" Twig syntax highlights
+Plug 'lumiliet/vim-twig'
 
 " Auto-Complete
 function! BuildYCM(info)

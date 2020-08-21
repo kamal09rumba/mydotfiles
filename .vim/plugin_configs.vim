@@ -31,6 +31,8 @@ map <c-n> :NERDTreeToggle<CR>
 autocmd BufWinEnter * NERDTreeMirror
 " show hidden files
 let NERDTreeShowHidden=1
+" Window size
+let NERDTreeWinSize=30
 
 
 
@@ -109,8 +111,17 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_python_binary_path = 'python3'
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
+" Don't show YCM's preview window
+set completeopt-=preview
 " Open GoToDefinition in new tab
 let g:ycm_goto_buffer_command = 'new-tab'
+"
+" character base trigger
+let g:ycm_semantic_triggers = {
+      \   'python': [ 're!\w{2}' ],
+      \   'css,scss': [ 're!^\s{2}', 're!^\s{4}', 're!:\s+' ],
+      \ }
+
 
 " virtualenv support
 "python with virtualenv support
@@ -196,6 +207,11 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" redefine trigger key ( using tab for autocomplete html tag )
 let g:user_emmet_expandabbr_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 
 
@@ -230,11 +246,14 @@ let g:lightline = {
 \   },
 \   'active': {
 \      'left': [ [ 'mode', 'paste' ],
-\                [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+\                [ 'gitbranch', 'readonly', 'filename', 'modified', 'cwd' ] ]
 \    },
 \    'component_function': {
 \       'gitbranch': 'FugitiveHead'
 \    },
+\    'component': {
+\       'cwd': '%{getcwd()}'
+\    }
 \}
 
 
@@ -260,5 +279,6 @@ endtry
 " Misc {{{
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType typescript,python :call GoYCM()
+autocmd FileType python :call GoYCM()
+autocmd FileType javascript :call GoYCM()
 " }}}
