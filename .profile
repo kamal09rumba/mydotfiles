@@ -29,10 +29,6 @@ export GEOSERVER_HOME=/usr/local/geoserver
 export PYTHONIOENCODING=UTF-8
 # For Localization
 export PATH="/usr/local/opt/gettext/bin:$PATH"
-## Git autocomplete
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
 ## fzf & ripgrep(rg)
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
