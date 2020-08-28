@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+## composer alias
+alias composer="php /usr/local/bin/composer"
+
+## docker alias
+alias dis='docker images | sort -k7 -hr' # sort docker images by size
+alias drmd='docker rmi $(docker images --quiet --filter "dangling=true")' # remove dangling images
+
+## Ngork (HTTP tunneling)
+alias ngork="/usr/local/bin/ngrok"
+
+## Medis (Redis management application)
+alias medis='( cd "$HOME/medis" && npm start )'

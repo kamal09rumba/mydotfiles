@@ -1,3 +1,5 @@
+### User installed executables, libraries etc (Program installed via Homebrew)
+export PATH="/usr/local/sbin:$PATH"
 ### Setting PATH for Python 3.7
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 ## php
@@ -11,9 +13,6 @@ export PATH=”/usr/local/Cellar/postgresql/11.4/bin/pg_config:$PATH”
 #export JAVA_HOME=$(/usr/libexec/java_home -v 12.0.2)
 ## Java 8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-### alias
-# composer
-alias composer="php /usr/local/bin/composer"
 ### laravel
 export PATH=~/.composer/vendor/bin:$PATH
 ## Android
@@ -34,12 +33,10 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
-## Ngork
-alias ngork="/usr/local/bin/ngrok"
-## Medis
-alias medis='( cd "$HOME/medis" && npm start )'
 ## fzf & ripgrep(rg)
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
+### import alias
+source .aliases
