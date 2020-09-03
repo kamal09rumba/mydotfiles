@@ -58,11 +58,6 @@ let g:NERDToggleCheckAllLines = 1
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"     PHP linter
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_php_phpcs_executable='$HOME/.composer/vendor/bin/phpcs'
-let g:ale_php_php_cs_fixer_executable='$HOME/.composer/vendor/bin/php-cs-fixer'
 
 
 
@@ -98,6 +93,15 @@ let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     PHP linter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_php_phpcs_executable='$HOME/.composer/vendor/bin/phpcs'
+let g:ale_php_php_cs_fixer_executable='$HOME/.composer/vendor/bin/php-cs-fixer'
+
+
+" Run ALEFix on save
 let g:ale_fix_on_save = 1
 "let g:airline#extensions#ale#enabled = 1
 
@@ -261,9 +265,13 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "     Vim fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>gs :G<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gb :Gblame<CR>
+" nmap <leader>gl :Glog<CR>
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
+nmap <leader>ga :G add %:p<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
