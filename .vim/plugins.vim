@@ -72,6 +72,9 @@ Plug 'tweekmonster/django-plus.vim'
 " Asynchronous Lint Engine(ALE)
 Plug 'w0rp/ale'
 
+" Xdebug
+Plug 'vim-vdebug/vdebug'
+
 
 " Snipplets
 " Plug 'SirVer/ultisnips'

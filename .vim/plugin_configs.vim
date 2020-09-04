@@ -274,6 +274,13 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>ga :G add %:p<CR>
 
 
+" vdebug
+
+let g:vdebug_options= {
+\ "port": 9007,
+\ "debug_file" : "/tmp/vdebug.log"
+\ }
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "     Presistent undo on files
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
