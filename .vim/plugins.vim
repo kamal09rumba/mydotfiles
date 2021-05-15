@@ -67,8 +67,12 @@ endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
+" Python
+" Plug 'psf/black', { 'branch': 'stable' }
+Plug 'ambv/black', { 'branch': 'stable'}
 " Django
 Plug 'tweekmonster/django-plus.vim'
+
 " Asynchronous Lint Engine(ALE)
 Plug 'w0rp/ale'
 

@@ -18,13 +18,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open NERDTree by default
 autocmd vimenter * NERDTree
-" Open NERDTree if no filename specified
+" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
 " Open NERDTree when vim start ups on opening a directory
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Close if only left window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Refresh when focusing the NERDTree window
+autocmd BufEnter NERD_tree_* | execute 'normal R'
 " Map to open Nerdtree
 map <c-n> :NERDTreeToggle<CR>
 " Mirror nerdtree
@@ -33,6 +35,8 @@ autocmd BufWinEnter * NERDTreeMirror
 let NERDTreeShowHidden=1
 " Window size
 let NERDTreeWinSize=30
+nnoremap t gt
+nnoremap T gT
 
 
 
@@ -64,25 +68,25 @@ let g:NERDToggleCheckAllLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "     Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_fixers = {
-\    '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'html': ['prettier'],
-\   'css': ['prettier'],
-\   'javascript': ['prettier', 'eslint'],
-\   'json': ['prettier'],
-\   'less': ['prettier'],
-\   'python': ['black', 'isort'],
-\   'scss': ['prettier'],
-\   'yaml': ['prettier'],
-\   'php': ['php_cs_fixer'],
-\}
 let g:ale_linters = {
 \   'html': ['prettier'],
 \   'css': ['prettier'],
 \   'javascript': ['prettier', 'eslint'],
 \   'json': ['prettier'],
 \   'less': ['prettier'],
-\   'python': ['flake8'],
+\   'python': ['black', 'isort', 'flake8'],
+\   'scss': ['prettier'],
+\   'yaml': ['yamllint', 'prettier'],
+\   'php': ['phpcs'],
+\}
+let g:ale_fixers = {
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'html': ['prettier'],
+\   'css': ['prettier'],
+\   'javascript': ['eslint'],
+\   'json': ['prettier'],
+\   'less': ['prettier'],
+\   'python': ['black', 'isort'],
 \   'scss': ['prettier'],
 \   'yaml': ['prettier'],
 \   'php': ['php_cs_fixer'],
@@ -92,6 +96,17 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"     Psf/black (Python Linter)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:black_skip_string_normalization = 1
+let g:string_normalization = 1
+let g:black_linelength = 120
+autocmd BufWritePre *.py execute ':Black'
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -296,4 +311,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType python :call GoYCM()
 autocmd FileType javascript :call GoYCM()
+"" support for jsx comment
+autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 " }}}

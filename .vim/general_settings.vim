@@ -60,6 +60,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.inc set filetype=php
     autocmd BufRead,BufNewFile *.profile set filetype=php
     autocmd BufRead,BufNewFile *.view set filetype=php
+    autocmd BufRead,BufNewFile *.theme set filetype=php
   augroup END
 endif
 
@@ -95,8 +96,6 @@ map <C-l> <C-w>l
 
 map <leader>p :bprevious<CR>
 map <leader>n :bnext<CR>
-nnoremap t gt
-nnoremap T gT
 
 " Easier tab navigation
 
