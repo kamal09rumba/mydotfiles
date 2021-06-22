@@ -52,7 +52,10 @@ let g:NERDDefaultAlign = 'left'
 " Set a language to use its alternate delimiters by default
 let g:NERDAltDelims_java = 1
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = {
+      \ 'c': { 'left': '/**','right': '*/' },
+      \ 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' }
+\}
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
@@ -60,6 +63,21 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
+
+
+"" FZF
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+
+nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-g>g :call FZFOpen(':Ag')<CR>
+nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
+nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
 
 
 
@@ -70,27 +88,28 @@ let g:NERDToggleCheckAllLines = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
 \   'html': ['prettier'],
-\   'css': ['prettier'],
-\   'javascript': ['prettier', 'eslint'],
+\   'css': ['stylelint'],
+\   'javascript': ['eslint', 'prettier'],
 \   'json': ['prettier'],
 \   'less': ['prettier'],
 \   'python': ['black', 'isort', 'flake8'],
-\   'scss': ['prettier'],
+\   'scss': ['stylelint'],
 \   'yaml': ['yamllint', 'prettier'],
 \   'php': ['phpcs'],
 \}
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'html': ['prettier'],
-\   'css': ['prettier'],
+\   'css': ['stylelint'],
 \   'javascript': ['eslint'],
 \   'json': ['prettier'],
 \   'less': ['prettier'],
 \   'python': ['black', 'isort'],
-\   'scss': ['prettier'],
+\   'scss': ['stylelint'],
 \   'yaml': ['prettier'],
 \   'php': ['php_cs_fixer'],
 \}
+
 
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
@@ -106,6 +125,9 @@ let g:black_skip_string_normalization = 1
 let g:string_normalization = 1
 let g:black_linelength = 120
 autocmd BufWritePre *.py execute ':Black'
+
+" flake8 config
+let g:ale_python_flake8_options = '--max-line-length=120'
 
 
 
@@ -171,6 +193,8 @@ nnoremap <c-t> :UndotreeToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Ag\<cr>"
 nnoremap <silent> <expr> <c-b> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Buffers\<cr>"
+"" Prevent fzf to open files inside nerdtree buffer
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 " Finding files
 nnoremap <silent> <C-f> :Files<CR>
 " Finding in files
@@ -271,7 +295,7 @@ let g:lightline = {
 \       'gitbranch': 'FugitiveHead'
 \    },
 \    'component': {
-\       'cwd': '%{getcwd()}'
+\       'cwd': "%{expand('%:p:h:t')}/%t",
 \    }
 \}
 
@@ -312,5 +336,5 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType python :call GoYCM()
 autocmd FileType javascript :call GoYCM()
 "" support for jsx comment
-autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+autocmd FileType javascript.js setlocal commentstring={/*\ %s\ */}
 " }}}
