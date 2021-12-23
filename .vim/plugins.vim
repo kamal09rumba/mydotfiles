@@ -31,6 +31,20 @@ Plug 'editorconfig/editorconfig-vim'
 " Fuzzy Finder(similar to GOTO)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Vim clap (popup)
+Plug 'liuchengxu/vim-clap'
+
+" Build the extra binary if cargo exists on your system.
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+" The bang version will try to download the prebuilt binary if cargo does not exist.
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" :Clap install-binary[!] will always try to compile the binary locally,
+" if you do care about the disk used for the compilation, try using the force download way,
+" which will download the prebuilt binary even you have installed cargo.
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+" `:Clap install-binary[!]` will run using the terminal feature which is inherently async.
+" If you don't want that and hope to run the hook synchorously:
+Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 " Quoting/Parenthesizing
 Plug 'tpope/vim-surround'
 " Cursor
@@ -53,6 +67,10 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Twig syntax highlights
 Plug 'lumiliet/vim-twig'
+" Vim indentation level
+Plug 'Yggdroot/indentLine'
+" Vim auto pairs
+Plug 'jiangmiao/auto-pairs'
 
 " Auto-Complete
 function! BuildYCM(info)

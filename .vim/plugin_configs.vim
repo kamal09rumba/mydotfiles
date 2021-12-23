@@ -107,8 +107,12 @@ let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \   'scss': ['stylelint'],
 \   'yaml': ['prettier'],
-\   'php': ['php_cs_fixer'],
+\   'php': ['phpcbf'],
 \}
+
+" For Drupal
+let g:ale_php_phpcs_options = '--standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --ignore=node_modules,bower_components,vendor'
+let g:ale_php_phpcbf_options = '--standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --ignore=node_modules,bower_components,vendor'
 
 
 let g:ale_sign_error = '✘'
@@ -160,7 +164,7 @@ let g:ycm_goto_buffer_command = 'new-tab'
 " character base trigger
 let g:ycm_semantic_triggers = {
       \   'python': [ 're!\w{2}' ],
-      \   'css,scss': [ 're!^\s{2}', 're!^\s{4}', 're!:\s+' ],
+      \   'css,scss': [ 're!^\s*', 're!:\s+' ],
       \ }
 
 
@@ -198,7 +202,7 @@ nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\
 " Finding files
 nnoremap <silent> <C-f> :Files<CR>
 " Finding in files
-nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader><Leader>f :Rg<CR>
 
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 " [Buffers] Jump to the existing window if possible
@@ -295,6 +299,7 @@ let g:lightline = {
 \       'gitbranch': 'FugitiveHead'
 \    },
 \    'component': {
+\       'cwd-back': '%{getcwd()}',
 \       'cwd': "%{expand('%:p:h:t')}/%t",
 \    }
 \}
