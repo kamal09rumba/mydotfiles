@@ -1,0 +1,5 @@
+map("n", "ff", [[:Telescope find_files]], {})
+map("n", "fg", [[:Telescope live_grep]], {})
+map("n", "fb", [[:Telescope buffers]], {})
+map("n", "fh", [[:Telescope help_tags]], {})
+map("n", "fl", [[:Telescope git_files]], {})
